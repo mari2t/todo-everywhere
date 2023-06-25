@@ -10,7 +10,7 @@ export default function Arrival() {
   return (
     <div className="flex justify-center items-center ">
       <div
-        style={{ width: "30vw", height: "80vh" }}
+        style={{ width: "30vw", height: "85vh" }}
         className="mt-4 bg-white bg-opacity-40 backdrop-blur-md"
       >
         <div className="flex justify-center items-center h-3/5 pt-3 pl-3 pr-3 pb-2 mb-2">
