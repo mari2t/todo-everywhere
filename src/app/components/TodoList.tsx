@@ -20,12 +20,7 @@ type TodoListProps = {
   setCompletedTasks: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const TodoList: React.FC<TodoListProps> = ({
-  waypoints,
-  setWaypoints,
-  completedTasks,
-  setCompletedTasks,
-}) => {
+const TodoList: React.FunctionComponent = () => {
   const {
     name,
     location,
@@ -34,6 +29,10 @@ const TodoList: React.FC<TodoListProps> = ({
     setTodos,
     locationPosition,
     destinationPosition,
+    waypoints,
+    setWaypoints,
+    completedTasks,
+    setCompletedTasks,
   } = useDepartureContext();
 
   const router = useRouter();

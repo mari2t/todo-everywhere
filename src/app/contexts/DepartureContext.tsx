@@ -35,11 +35,17 @@ type DepartureContextType = {
   setLocationPosition: React.Dispatch<React.SetStateAction<Position>>;
   destinationPosition: Position;
   setDestinationPosition: React.Dispatch<React.SetStateAction<Position>>;
-  completedTasks: number;
-  setCompletedTasks: React.Dispatch<React.SetStateAction<number>>;
   resetState: () => void;
   shouldRedirect: boolean;
   setShouldRedirect: React.Dispatch<React.SetStateAction<boolean>>;
+  displayComponent: string;
+  setDisplayComponent: React.Dispatch<React.SetStateAction<string>>;
+  searchWord: string;
+  setSearchWord: React.Dispatch<React.SetStateAction<string>>;
+  waypoints: Position[];
+  setWaypoints: React.Dispatch<React.SetStateAction<Position[]>>;
+  completedTasks: number;
+  setCompletedTasks: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const DepartureContext = createContext<DepartureContextType | undefined>(
@@ -67,6 +73,10 @@ const INITIAL_LOCATION_POSITION = { latitude: null, longitude: null };
 const INITIAL_DESTINATION_POSITION = { latitude: null, longitude: null };
 const INITIAL_COMPLETED_TASKS = 0;
 const [shouldRedirect, setShouldRedirect] = useState(false);
+const [displayComponent, setDisplayComponent] = useState<string>("TodoList");
+const [searchWord, setSearchWord] = useState<string>("cafe");
+const [waypoints, setWaypoints] = useState<Position[]>([]);
+const [completedTasks, setCompletedTasks] = useState(0);
 
 export default function DepartureProvider({
   children,
@@ -111,6 +121,10 @@ export default function DepartureProvider({
     setLocationPosition(INITIAL_LOCATION_POSITION);
     setDestinationPosition(INITIAL_DESTINATION_POSITION);
     setCompletedTasks(INITIAL_COMPLETED_TASKS);
+    setDisplayComponent("TodoList");
+    setSearchWord("cafe");
+    setWaypoints([]);
+    setCompletedTasks(0);
   }
 
   return (
@@ -136,6 +150,12 @@ export default function DepartureProvider({
         setCompletedTasks,
         shouldRedirect,
         setShouldRedirect,
+        displayComponent,
+        setDisplayComponent,
+        searchWord,
+        setSearchWord,
+        waypoints,
+        setWaypoints,
         resetState,
       }}
     >

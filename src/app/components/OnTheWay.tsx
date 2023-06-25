@@ -1,4 +1,5 @@
 import React, { useState, ReactNode } from "react";
+import { useDepartureContext } from "../contexts/DepartureContext";
 import TodoList from "./TodoList";
 import Direction from "./Direction";
 import SearchPlace from "./SearchPlace";
@@ -9,10 +10,11 @@ type Position = {
 };
 
 export default function OnTheWay() {
-  const [displayComponent, setDisplayComponent] = useState<string>("TodoList"); //
   const [searchWord, setSearchWord] = useState<string>("cafe"); // 検索ワード
   const [waypoints, setWaypoints] = useState<Position[]>([]); // 中継地点
   const [completedTasks, setCompletedTasks] = useState(0); // タスク終了状況
+
+  const { displayComponent, setDisplayComponent } = useDepartureContext();
 
   const handleTodoListClick = () => {
     console.log("Status button clicked");
@@ -53,18 +55,9 @@ export default function OnTheWay() {
           </button>
         </div>
       </div>
-      {displayComponent === "TodoList" && (
-        <TodoList
-          waypoints={waypoints}
-          setWaypoints={setWaypoints}
-          completedTasks={completedTasks}
-          setCompletedTasks={setCompletedTasks}
-        />
-      )}
+      {displayComponent === "TodoList" && <TodoList />}
       {displayComponent === "Direction" && <Direction />}
-      {displayComponent === "SearchPlace" && (
-        <SearchPlace searchWord={searchWord} setSearchWord={setSearchWord} />
-      )}
+      {displayComponent === "SearchPlace" && <SearchPlace />}
     </div>
   );
 }

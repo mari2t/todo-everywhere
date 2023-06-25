@@ -9,11 +9,13 @@ interface SearchPlaceProps {
   setSearchWord: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchPlace: React.FC<SearchPlaceProps> = ({
-  searchWord,
-  setSearchWord,
-}) => {
-  const { geocodingDestination, destinationPosition } = useDepartureContext();
+const SearchPlace: React.FunctionComponent = () => {
+  const {
+    geocodingDestination,
+    destinationPosition,
+    searchWord,
+    setSearchWord,
+  } = useDepartureContext();
 
   return (
     <div className="flex justify-center ">
