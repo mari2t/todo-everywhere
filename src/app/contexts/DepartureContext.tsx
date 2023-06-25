@@ -72,11 +72,6 @@ const INITIAL_TODOS = [
 const INITIAL_LOCATION_POSITION = { latitude: null, longitude: null };
 const INITIAL_DESTINATION_POSITION = { latitude: null, longitude: null };
 const INITIAL_COMPLETED_TASKS = 0;
-const [shouldRedirect, setShouldRedirect] = useState(false);
-const [displayComponent, setDisplayComponent] = useState<string>("TodoList");
-const [searchWord, setSearchWord] = useState<string>("cafe");
-const [waypoints, setWaypoints] = useState<Position[]>([]);
-const [completedTasks, setCompletedTasks] = useState(0);
 
 export default function DepartureProvider({
   children,
@@ -108,7 +103,11 @@ export default function DepartureProvider({
     latitude: null,
     longitude: null,
   });
-  const [completedTasks, setCompletedTasks] = useState<number>(0);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [displayComponent, setDisplayComponent] = useState<string>("TodoList");
+  const [searchWord, setSearchWord] = useState<string>("cafe");
+  const [waypoints, setWaypoints] = useState<Position[]>([]);
+  const [completedTasks, setCompletedTasks] = useState(0);
 
   // リセット関数
   function resetState() {
