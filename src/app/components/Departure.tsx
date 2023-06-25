@@ -6,6 +6,11 @@ import { useDepartureContext } from "../contexts/DepartureContext";
 import { BsAirplaneFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
+type Position = {
+  latitude: number | null;
+  longitude: number | null;
+};
+
 const Departure = () => {
   const router = useRouter();
   const { fromLatAndLonLocation, getLocationFromLatAndLon } =
@@ -31,6 +36,7 @@ const Departure = () => {
     setDestinationPosition,
     shouldRedirect,
     setShouldRedirect,
+    setWaypoints,
   } = useDepartureContext();
 
   //　TODOを設定する関数
@@ -88,13 +94,57 @@ const Departure = () => {
     }
   };
 
+  const calculateWaypoints = () => {
+    if (
+      locationPosition.latitude &&
+      locationPosition.longitude &&
+      destinationPosition.latitude &&
+      destinationPosition.longitude &&
+      todos.length
+    ) {
+      let newWaypoints: Position[] = [];
+      for (let i = 1; i < todos.length; i++) {
+        let ratio = i / todos.length;
+        let newLatitude = lerp(
+          locationPosition.latitude,
+          destinationPosition.latitude,
+          ratio
+        );
+        let newLongitude = lerp(
+          locationPosition.longitude,
+          destinationPosition.longitude,
+          ratio
+        );
+
+        // Convert to 5 decimal places and parse back to a number
+        newLatitude = parseFloat(newLatitude?.toFixed(5) || "");
+        newLongitude = parseFloat(newLongitude?.toFixed(5) || "");
+
+        newWaypoints.push({ latitude: newLatitude, longitude: newLongitude });
+      }
+      setWaypoints(newWaypoints);
+    }
+  };
+
+  // Linear interpolation function
+  function lerp(
+    start: number | null,
+    end: number | null,
+    ratio: number
+  ): number | null {
+    if (start === null || end === null) return null;
+    return start + ratio * (end - start);
+  }
+
   //　出発ボタンの関数　inputの確認とアラート
   const handleDeparture = () => {
     if (!name || !location || !destination || todos.some((todo) => !todo)) {
       alert("すべての項目を入力してください。\nPlease fill in all fields.");
     } else {
       alert("出発準備完了！\nReady to depart!");
+      calculateWaypoints();
       setShouldRedirect(true);
+      router.push("/OnTheWay");
     }
   };
 
@@ -151,13 +201,6 @@ const Departure = () => {
       }
     }
   };
-
-  //　ページ遷移させる
-  useEffect(() => {
-    if (shouldRedirect) {
-      router.push("/OnTheWay");
-    }
-  }, [shouldRedirect]);
 
   return (
     <div className="flex justify-center">
