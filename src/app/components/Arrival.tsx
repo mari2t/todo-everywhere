@@ -1,6 +1,6 @@
 import React from "react";
 import { useDepartureContext } from "../contexts/DepartureContext";
-import { BsPersonCircle } from "react-icons/Bs";
+import { BsPersonCircle } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 export default function Arrival() {

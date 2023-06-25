@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCityToLatLon } from "../hooks/useCityToLatLon";
 import { useCurrentPosition } from "../hooks/useCurrentPosition";
 import { useDepartureContext } from "../contexts/DepartureContext";
-import { BsAirplaneFill } from "react-icons/Bs";
+import { BsAirplaneFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 const Departure = () => {

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useDepartureContext } from "../contexts/DepartureContext";
-import { FaSearch } from "react-icons/Fa";
+import { FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 //受け取るプロップスの定義
