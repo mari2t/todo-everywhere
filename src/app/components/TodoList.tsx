@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDepartureContext } from "../contexts/DepartureContext";
 import { useRouter } from "next/navigation";
 

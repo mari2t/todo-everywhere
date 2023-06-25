@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { DepartureContext } from "../contexts/DepartureContext";
 
 export default function Direction() {
