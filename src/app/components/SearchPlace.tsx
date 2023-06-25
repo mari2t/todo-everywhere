@@ -13,33 +13,13 @@ const SearchPlace: React.FC<SearchPlaceProps> = ({
   searchWord,
   setSearchWord,
 }) => {
-  // Window size states
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    };
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Clean up function
-    return () => {
-      // Remove event listener
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const { geocodingDestination, destinationPosition } = useDepartureContext();
 
   return (
     <div className="flex justify-center ">
       <div
         className=" backdrop-blur-md bg-white bg-opacity-40"
-        style={{ width: windowWidth / 2, height: (3 * windowHeight) / 5 }}
+        style={{ width: "50vw", height: "60vh" }}
       >
         <div className="w-full flex text-center justify-center">
           <input

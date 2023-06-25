@@ -37,8 +37,6 @@ const TodoList: React.FC<TodoListProps> = ({
   } = useDepartureContext();
 
   const router = useRouter();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   // 中継地計算
   useEffect(() => {
@@ -72,23 +70,6 @@ const TodoList: React.FC<TodoListProps> = ({
       setWaypoints(newWaypoints);
     }
   }, [todos, locationPosition, destinationPosition]);
-
-  // ウィンドウサイズの調整
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    };
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Clean up function
-    return () => {
-      // Remove event listener
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const handleTodoClick = (index: number) => {
     console.log(`Todo ${index} completed`);
@@ -128,7 +109,7 @@ const TodoList: React.FC<TodoListProps> = ({
     <div className="flex justify-center">
       <div
         className="bg-white bg-opacity-40 backdrop-blur-md flex"
-        style={{ width: windowWidth / 2, height: (3 * windowHeight) / 5 }}
+        style={{ width: "50vw", height: "60vh" }}
       >
         <div className="w-1/2 h-full">
           <div className="">

@@ -4,26 +4,6 @@ import { DepartureContext } from "../contexts/DepartureContext";
 export default function Direction() {
   const context = useContext(DepartureContext);
 
-  // Window size states
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      setWindowHeight(window.innerHeight);
-    };
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Clean up function
-    return () => {
-      // Remove event listener
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   if (!context) {
     return <div>Loading...</div>;
   }
@@ -34,7 +14,7 @@ export default function Direction() {
     <div className="flex justify-center">
       <div
         className="bg-white bg-opacity-40 backdrop-blur-md flex"
-        style={{ width: windowWidth / 2, height: (3 * windowHeight) / 5 }}
+        style={{ width: "50vw", height: "60vh" }}
       >
         <iframe
           style={{
