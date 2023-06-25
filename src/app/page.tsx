@@ -1,4 +1,3 @@
-"use client";
 import { useEffect } from "react";
 import Header from "./components/Header";
 import Departure from "./components/Departure";

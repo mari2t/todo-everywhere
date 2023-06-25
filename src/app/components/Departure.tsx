@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCityToLatLon } from "../hooks/useCityToLatLon";
 import { useCurrentPosition } from "../hooks/useCurrentPosition";
@@ -8,7 +8,6 @@ import { IconContext } from "react-icons";
 
 const Departure = () => {
   const router = useRouter();
-  const [shouldRedirect, setShouldRedirect] = useState(false);
   const { fromLatAndLonLocation, getLocationFromLatAndLon } =
     useCurrentPosition();
   const { latLonFromCity, getLatLonFromCity } = useCityToLatLon();
@@ -30,6 +29,8 @@ const Departure = () => {
     setLocationPosition,
     destinationPosition,
     setDestinationPosition,
+    shouldRedirect,
+    setShouldRedirect,
   } = useDepartureContext();
 
   //　TODOを設定する関数

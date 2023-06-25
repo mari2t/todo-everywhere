@@ -38,6 +38,8 @@ type DepartureContextType = {
   completedTasks: number;
   setCompletedTasks: React.Dispatch<React.SetStateAction<number>>;
   resetState: () => void;
+  shouldRedirect: boolean;
+  setShouldRedirect: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const DepartureContext = createContext<DepartureContextType | undefined>(
@@ -64,6 +66,7 @@ const INITIAL_TODOS = [
 const INITIAL_LOCATION_POSITION = { latitude: null, longitude: null };
 const INITIAL_DESTINATION_POSITION = { latitude: null, longitude: null };
 const INITIAL_COMPLETED_TASKS = 0;
+const [shouldRedirect, setShouldRedirect] = useState(false);
 
 export default function DepartureProvider({
   children,
@@ -131,6 +134,8 @@ export default function DepartureProvider({
         setDestinationPosition,
         completedTasks,
         setCompletedTasks,
+        shouldRedirect,
+        setShouldRedirect,
         resetState,
       }}
     >
