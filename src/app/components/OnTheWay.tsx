@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from "react";
+import React from "react";
 import { useDepartureContext } from "../contexts/DepartureContext";
 import TodoList from "./TodoList";
 import Direction from "./Direction";
@@ -10,10 +10,6 @@ type Position = {
 };
 
 export default function OnTheWay() {
-  const [searchWord, setSearchWord] = useState<string>("cafe"); // 検索ワード
-  const [waypoints, setWaypoints] = useState<Position[]>([]); // 中継地点
-  const [completedTasks, setCompletedTasks] = useState(0); // タスク終了状況
-
   const { displayComponent, setDisplayComponent } = useDepartureContext();
 
   const handleTodoListClick = () => {
