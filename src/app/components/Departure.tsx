@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import MapFrom from "./MapFrom";
 import { useCityToLatLon } from "../hooks/useCityToLatLon";
 import { useCurrentPosition } from "../hooks/useCurrentPosition";
 import { useDepartureContext } from "../contexts/DepartureContext";
@@ -325,7 +326,13 @@ const Departure = () => {
             </div>
             <label className="justify-center mb-1 pl-4">To:</label>
             <div className="justify-center m-1 pl-4">
-              <iframe
+              <MapFrom
+                geocodingDestination={{
+                  cityName: geocodingDestination.cityName,
+                  country: geocodingDestination.country,
+                }}
+              />
+              {/*               <iframe
                 style={{
                   width: "90%",
                   height: "50%",
@@ -333,7 +340,7 @@ const Departure = () => {
                 }}
                 loading="lazy"
                 src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_API_KEY_g}&&q=${geocodingDestination.cityName}+${geocodingDestination.country}&zoom=8`}
-              ></iframe>
+              ></iframe> */}
             </div>
           </div>
         </div>
