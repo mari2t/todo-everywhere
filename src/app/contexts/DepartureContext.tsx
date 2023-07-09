@@ -2,11 +2,13 @@
 import { createContext, useContext } from "react";
 import React, { useState, ReactNode } from "react";
 
+// 地理座標
 type Position = {
   latitude: number | null;
   longitude: number | null;
 };
 
+// 都市と国
 type CityAndCountry = {
   cityName: string | null;
   country: string | null;
@@ -61,8 +63,8 @@ const INITIAL_GEOCODING_LOCATION = {
   country: "JP",
 };
 const INITIAL_GEOCODING_DESTINATION = {
-  cityName: "Honolulu",
-  country: "US",
+  cityName: "paris",
+  country: "FR",
 };
 const INITIAL_TODOS = [
   { id: 1, task: "", done: false },
@@ -87,8 +89,8 @@ export default function DepartureProvider({
   });
   const [geocodingDestination, setGeocodingDestination] =
     useState<CityAndCountry>({
-      cityName: "Honolulu",
-      country: "US",
+      cityName: "paris",
+      country: "FR",
     });
   const [todos, setTodos] = useState<TodoType[]>([
     { id: 1, task: "", done: false },

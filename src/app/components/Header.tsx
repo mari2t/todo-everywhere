@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ className = "" }) => {
               style={{ position: "relative", width: "100%", height: "100%" }}
             >
               <Image
-                src="/img/todoontheplane.jpg"
+                src="/img/todoeverywhere.jpg"
                 alt="Logo"
                 width={500}
                 height={300}

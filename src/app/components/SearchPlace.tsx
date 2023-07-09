@@ -2,12 +2,6 @@ import { useDepartureContext } from "../contexts/DepartureContext";
 import { FaSearch } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-//受け取るプロップスの定義
-interface SearchPlaceProps {
-  searchWord: string;
-  setSearchWord: React.Dispatch<React.SetStateAction<string>>;
-}
-
 const SearchPlace: React.FunctionComponent = () => {
   const {
     geocodingDestination,

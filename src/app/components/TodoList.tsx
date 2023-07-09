@@ -12,14 +12,6 @@ type Position = {
   longitude: number | null;
 };
 
-//受け取るプロップスの定義
-type TodoListProps = {
-  waypoints: Position[];
-  setWaypoints: React.Dispatch<React.SetStateAction<Position[]>>;
-  completedTasks: number;
-  setCompletedTasks: React.Dispatch<React.SetStateAction<number>>;
-};
-
 const TodoList: React.FunctionComponent = () => {
   const {
     name,

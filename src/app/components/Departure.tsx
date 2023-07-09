@@ -1,10 +1,9 @@
-import { useEffect } from "react";
+"use client";
 import { useRouter } from "next/navigation";
-import MapFrom from "./MapFrom";
 import { useCityToLatLon } from "../hooks/useCityToLatLon";
 import { useCurrentPosition } from "../hooks/useCurrentPosition";
 import { useDepartureContext } from "../contexts/DepartureContext";
-import { BsAirplaneFill } from "react-icons/bs";
+import { ImArrowDown } from "react-icons/im";
 import { IconContext } from "react-icons";
 
 type Position = {
@@ -230,7 +229,7 @@ const Departure = () => {
                   className=" w-3/4 px-3 py-2 border rounded"
                   type="text"
                   value={location || ""}
-                  placeholder="input location and enter(ex Shibuya)"
+                  placeholder="input location and enter(ex shibuya)"
                   onChange={(e) => setLocation(e.target.value)}
                   onKeyDown={handSetLocation}
                 />
@@ -248,7 +247,7 @@ const Departure = () => {
                 className="w-3/4 px-3 py-2 border rounded"
                 type="text"
                 value={destination}
-                placeholder="input destination and enter(ex Honolulu)"
+                placeholder="input destination and enter(ex paris)"
                 onChange={(e) => setDestination(e.target.value)}
                 onKeyDown={handSetDestination}
               />
@@ -318,21 +317,14 @@ const Departure = () => {
                 value={{
                   color: "rgb(12 74 110)",
                   size: "2em",
-                  style: { transform: "rotate(180deg)" },
                 }}
               >
-                <BsAirplaneFill />
+                <ImArrowDown />
               </IconContext.Provider>
             </div>
             <label className="justify-center mb-1 pl-4">To:</label>
             <div className="justify-center m-1 pl-4">
-              <MapFrom
-                geocodingDestination={{
-                  cityName: geocodingDestination.cityName,
-                  country: geocodingDestination.country,
-                }}
-              />
-              {/*               <iframe
+              <iframe
                 style={{
                   width: "90%",
                   height: "50%",
@@ -340,7 +332,7 @@ const Departure = () => {
                 }}
                 loading="lazy"
                 src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_API_KEY_g}&&q=${geocodingDestination.cityName}+${geocodingDestination.country}&zoom=8`}
-              ></iframe> */}
+              ></iframe>
             </div>
           </div>
         </div>

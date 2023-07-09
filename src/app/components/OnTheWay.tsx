@@ -1,13 +1,9 @@
+"use client";
 import React from "react";
 import { useDepartureContext } from "../contexts/DepartureContext";
 import TodoList from "./TodoList";
 import Direction from "./Direction";
 import SearchPlace from "./SearchPlace";
-
-type Position = {
-  latitude: number | null;
-  longitude: number | null;
-};
 
 export default function OnTheWay() {
   const { displayComponent, setDisplayComponent } = useDepartureContext();
