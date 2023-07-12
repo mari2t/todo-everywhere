@@ -13,7 +13,7 @@ export default function Direction() {
   return (
     <div className="flex justify-center">
       <div
-        className="bg-white bg-opacity-40 backdrop-blur-md flex"
+        className="bg-white bg-opacity-60 backdrop-blur-md flex"
         style={{ width: "50vw", height: "60vh" }}
       >
         <iframe

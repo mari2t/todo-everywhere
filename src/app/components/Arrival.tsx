@@ -12,7 +12,7 @@ export default function Arrival() {
     <div className="flex justify-center items-center ">
       <div
         style={{ width: "30vw", height: "85vh" }}
-        className="mt-4 bg-white bg-opacity-40 backdrop-blur-md"
+        className="mt-4 bg-white bg-opacity-60 backdrop-blur-md"
       >
         <div className="flex justify-center items-center h-3/5 pt-3 pl-3 pr-3 pb-2 mb-1">
           <iframe
@@ -39,9 +39,7 @@ export default function Arrival() {
                 <label className="text-blue-800">#{todo.task}</label>
               </div>
             ))}
-            <h2 className="ml-2 mb-2">
-              いつか {destination} に行ってみたい!!!
-            </h2>
+            <h2 className="ml-2 mb-2">いつか {destination} に行きたい！</h2>
           </div>
         </div>
       </div>

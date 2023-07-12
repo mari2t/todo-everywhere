@@ -13,7 +13,7 @@ const SearchPlace: React.FunctionComponent = () => {
   return (
     <div className="flex justify-center ">
       <div
-        className=" backdrop-blur-md bg-white bg-opacity-40"
+        className=" backdrop-blur-md bg-white bg-opacity-60"
         style={{ width: "50vw", height: "60vh" }}
       >
         <div className="w-full flex text-center justify-center">

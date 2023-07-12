@@ -204,14 +204,14 @@ const Departure = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="bg-white bg-opacity-40 backdrop-blur-md w-2/3 h-3/4 ">
+      <div className="bg-white bg-opacity-60 backdrop-blur-md w-2/3 h-3/4 ">
         <div className="bg-sky-900 text-white text-center  py-2 text-xl">
           BOARDING PASS
         </div>
         <div className="container mx-auto my-5 px-4  flex">
           <div className="w-3/5 pl-4">
             <div className="flex mb-2">
-              <label className="w-1/4">Name:</label>
+              <label className="w-1/4 font-medium text-lg">Name:</label>
               <input
                 className="w-3/4 px-3 py-2 border rounded bg-opacity-10"
                 type="text"
@@ -223,7 +223,7 @@ const Departure = () => {
               />
             </div>
             <div className="flex mb-2">
-              <label className="w-1/4">From:</label>
+              <label className="w-1/4 font-medium text-lg">From:</label>
               <div className="w-3/4 flex gap-2">
                 <input
                   className=" w-3/4 px-3 py-2 border rounded"
@@ -242,7 +242,7 @@ const Departure = () => {
               </div>
             </div>
             <div className="flex mb-2">
-              <label className="w-1/4">To:</label>
+              <label className="w-1/4 font-medium text-lg">To:</label>
               <input
                 className="w-3/4 px-3 py-2 border rounded"
                 type="text"
@@ -254,7 +254,9 @@ const Departure = () => {
             </div>
             {todos.map((todo, index) => (
               <div key={`todo-${index}`} className="flex mb-2 ">
-                <label className="w-1/4">{`TODO #${index + 1}:`}</label>
+                <label className="w-1/4 font-medium text-lg">{`TODO #${
+                  index + 1
+                }:`}</label>
                 <div className="w-3/4 flex gap-2">
                   <input
                     className={`w-${
