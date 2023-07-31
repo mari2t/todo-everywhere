@@ -1,4 +1,5 @@
 "use client";
+import React, { ChangeEvent, KeyboardEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useCityToLatLon } from "../hooks/useCityToLatLon";
 import { useCurrentPosition } from "../hooks/useCurrentPosition";
@@ -148,6 +149,34 @@ const Departure = () => {
     }
   };
 
+  const handleLocationInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setLocation(e.target.value);
+  };
+
+  const handleSetLocation = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      console.log(`Location is confirmed: ${location}`);
+    }
+  };
+
+  const handleLocationConfirmClick = () => {
+    console.log(`Location is confirmed: ${location}`);
+  };
+
+  const handleDestinationInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDestination(e.target.value);
+  };
+
+  const handleSetDestination = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      console.log(`Destination is confirmed: ${destination}`);
+    }
+  };
+
+  const handleDestinationConfirmClick = () => {
+    console.log(`Destination is confirmed: ${destination}`);
+  };
+
   // Locationの入力からLatとLonを取得する関数
   const handSetLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -211,9 +240,9 @@ const Departure = () => {
         <div className="container mx-auto my-5 px-4  flex">
           <div className="w-3/5 pl-4">
             <div className="flex mb-2">
-              <label className="w-1/4 font-medium text-lg">Name:</label>
+              <label className="w-1/5 font-medium text-lg">Name:</label>
               <input
-                className="w-3/4 px-3 py-2 border rounded bg-opacity-10"
+                className="w-4/5 px-3 py-2 border rounded bg-opacity-10"
                 type="text"
                 value={name}
                 placeholder="input your name"
@@ -223,44 +252,65 @@ const Departure = () => {
               />
             </div>
             <div className="flex mb-2">
-              <label className="w-1/4 font-medium text-lg">From:</label>
-              <div className="w-3/4 flex gap-2">
+              <label className="w-1/5 font-medium text-lg">From:</label>
+              <div className="w-4/5 flex gap-2">
                 <input
-                  className=" w-3/4 px-3 py-2 border rounded"
+                  className="w-3/4 px-3 py-2 border rounded"
                   type="text"
                   value={location || ""}
                   placeholder="input location and enter(ex shibuya)"
-                  onChange={(e) => setLocation(e.target.value)}
-                  onKeyDown={handSetLocation}
+                  onChange={handleLocationInputChange}
+                  onKeyDown={handleSetLocation}
                 />
                 <button
+                  className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
+                  onClick={handleLocationConfirmClick}
+                >
+                  Confirm
+                </button>
+                <button
                   className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
-                  onClick={() => getCurrentLocation()}
+                  onClick={getCurrentLocation}
                 >
                   Get Current Location
                 </button>
               </div>
             </div>
             <div className="flex mb-2">
-              <label className="w-1/4 font-medium text-lg">To:</label>
-              <input
-                className="w-3/4 px-3 py-2 border rounded"
-                type="text"
-                value={destination}
-                placeholder="input destination and enter(ex paris)"
-                onChange={(e) => setDestination(e.target.value)}
-                onKeyDown={handSetDestination}
-              />
+              <label className="w-1/5 font-medium text-lg">To:</label>
+              <div className="w-4/5 flex gap-2">
+                <input
+                  className="w-3/4 px-3 py-2 border rounded"
+                  type="text"
+                  value={destination}
+                  placeholder="input destination and enter(ex paris)"
+                  onChange={handleDestinationInputChange}
+                  onKeyDown={handleSetDestination}
+                />
+                <button
+                  className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
+                  onClick={handleDestinationConfirmClick}
+                >
+                  Confirm
+                </button>
+                <button
+                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
+                  onClick={getCurrentLocation}
+                >
+                  Get Current Location
+                </button>
+              </div>
             </div>
+
             {todos.map((todo, index) => (
               <div key={`todo-${index}`} className="flex mb-2 ">
-                <label className="w-1/4 font-medium text-lg">{`TODO #${
+                <label className="w-1/5 font-medium text-lg">{`TODO #${
                   index + 1
                 }:`}</label>
-                <div className="w-3/4 flex gap-2">
+                <div className="w-4/5 flex gap-2">
                   <input
                     className={`w-${
-                      index < 3 ? "full" : "3/4"
+                      index < 3 ? "full" : "4/5"
                     } px-3 py-2 border rounded `}
                     type="text"
                     value={todo.task}
