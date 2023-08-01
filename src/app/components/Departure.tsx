@@ -243,13 +243,13 @@ const Departure = () => {
                 />
                 <label className="w-1/6 text-center">or</label>
                 <button
-                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
+                  className="w-1/4 px-3 py-2 border rounded bg-blue-400 text-white text-xs"
                   onClick={getCurrentLocation}
                 >
                   Get Location
                 </button>
                 <button
-                  className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
+                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
                   onClick={setLatLonFromLocation}
                 >
                   Confirm
@@ -269,7 +269,7 @@ const Departure = () => {
                 />
                 <label className="w-1/6 text-center">or</label>
                 <select
-                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
+                  className="w-1/4 px-3 py-2 border rounded bg-blue-400 text-white text-xs"
                   onChange={(e) => setDestination(e.target.value)}
                 >
                   {cities.map((city, index) => (
@@ -279,7 +279,7 @@ const Departure = () => {
                   ))}
                 </select>
                 <button
-                  className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
+                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
                   onClick={setLatLonFromDestination}
                 >
                   Confirm
