@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, KeyboardEvent } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import { useCityToLatLon } from "../hooks/useCityToLatLon";
 import { useCurrentPosition } from "../hooks/useCurrentPosition";
@@ -39,6 +39,8 @@ const Departure = () => {
     setShouldRedirect,
     setWaypoints,
   } = useDepartureContext();
+
+  const cities = ["(select)", "Paris", "New york", "Singapore"];
 
   //　TODOを設定する関数
   const handleTodoChange = (id: number, task: string, done: boolean) => {
@@ -149,91 +151,68 @@ const Departure = () => {
     }
   };
 
-  const handleLocationInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
-  };
-
-  const handleSetLocation = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleEnterLocationInput = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (e.key === "Enter") {
-      console.log(`Location is confirmed: ${location}`);
+      // ここでエンターが押されたときのロジックを書く
+      setLatLonFromLocation();
     }
-  };
-
-  const handleLocationConfirmClick = () => {
-    console.log(`Location is confirmed: ${location}`);
-  };
-
-  const handleDestinationInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setDestination(e.target.value);
-  };
-
-  const handleSetDestination = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      console.log(`Destination is confirmed: ${destination}`);
-    }
-  };
-
-  const handleDestinationConfirmClick = () => {
-    console.log(`Destination is confirmed: ${destination}`);
   };
 
   // Locationの入力からLatとLonを取得する関数
-  const handSetLocation = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      if (location) {
-        getLatLonFromCity(location).then((result) => {
-          if (result !== null) {
-            if (
-              result.latitude != destinationPosition.latitude &&
-              result.longitude != destinationPosition.longitude
-            ) {
-              setLocationPosition(result);
-              setGeocodingLocation(result);
-            } else {
-              alert(
-                "FromとToは別の場所を入力してください。\nPlease enter a different location for From and To."
-              );
-            }
+  const setLatLonFromLocation = () => {
+    if (location) {
+      getLatLonFromCity(location).then((result) => {
+        if (result !== null) {
+          if (
+            result.latitude != destinationPosition.latitude &&
+            result.longitude != destinationPosition.longitude
+          ) {
+            setLocationPosition(result);
+            setGeocodingLocation(result);
           } else {
             alert(
-              "位置が特定できませんでした。別の表記又は別の地名を入力してください。\nLocation not found.\nPlease enter another notation or another place name."
+              "FromとToは別の場所を入力してください。\nPlease enter a different location for From and To."
             );
           }
-        });
-      }
+        } else {
+          alert(
+            "位置が特定できませんでした。別の表記又は別の地名を入力してください。\nLocation not found.\nPlease enter another notation or another place name."
+          );
+        }
+      });
     }
   };
 
   // Destinationの入力からLatとLonを取得する関数
-  const handSetDestination = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      if (destination) {
-        getLatLonFromCity(destination).then((result) => {
-          if (result !== null) {
-            if (
-              result.latitude != locationPosition.latitude &&
-              result.longitude != locationPosition.longitude
-            ) {
-              setDestinationPosition(result);
-              setGeocodingDestination(result);
-            } else {
-              alert(
-                "FromとToは別の場所を入力してください。\nPlease enter a different location for From and To."
-              );
-            }
+  const setLatLonFromDestination = () => {
+    if (destination) {
+      getLatLonFromCity(destination).then((result) => {
+        if (result !== null) {
+          if (
+            result.latitude != locationPosition.latitude &&
+            result.longitude != locationPosition.longitude
+          ) {
+            setDestinationPosition(result);
+            setGeocodingDestination(result);
           } else {
             alert(
-              "位置が特定できませんでした。別の表記又は別の地名を入力してください。\nLocation not found.\nPlease enter another notation or another place name."
+              "FromとToは別の場所を入力してください。\nPlease enter a different location for From and To."
             );
           }
-        });
-      }
+        } else {
+          alert(
+            "位置が特定できませんでした。別の表記又は別の地名を入力してください。\nLocation not found.\nPlease enter another notation or another place name."
+          );
+        }
+      });
     }
   };
 
   return (
     <div className="flex justify-center">
-      <div className="bg-white bg-opacity-60 backdrop-blur-md w-2/3 h-3/4 ">
+      <div className="bg-white bg-opacity-60 backdrop-blur-md w-3/4 h-3/4 ">
         <div className="bg-sky-900 text-white text-center  py-2 text-xl">
           BOARDING PASS
         </div>
@@ -258,21 +237,22 @@ const Departure = () => {
                   className="w-3/4 px-3 py-2 border rounded"
                   type="text"
                   value={location || ""}
-                  placeholder="input location and enter(ex shibuya)"
-                  onChange={handleLocationInputChange}
-                  onKeyDown={handleSetLocation}
+                  placeholder="input location(ex shibuya)"
+                  onChange={(e) => setLocation(e.target.value)}
+                  onKeyDown={handleEnterLocationInput}
                 />
-                <button
-                  className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
-                  onClick={handleLocationConfirmClick}
-                >
-                  Confirm
-                </button>
+                <label className="w-1/6 text-center">or</label>
                 <button
                   className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
                   onClick={getCurrentLocation}
                 >
-                  Get Current Location
+                  Get Location
+                </button>
+                <button
+                  className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
+                  onClick={setLatLonFromLocation}
+                >
+                  Confirm
                 </button>
               </div>
             </div>
@@ -283,21 +263,26 @@ const Departure = () => {
                   className="w-3/4 px-3 py-2 border rounded"
                   type="text"
                   value={destination}
-                  placeholder="input destination and enter(ex paris)"
-                  onChange={handleDestinationInputChange}
-                  onKeyDown={handleSetDestination}
+                  placeholder="input destination(ex London)"
+                  onChange={(e) => setDestination(e.target.value)}
+                  onKeyDown={setLatLonFromDestination}
                 />
+                <label className="w-1/6 text-center">or</label>
+                <select
+                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
+                  onChange={(e) => setDestination(e.target.value)}
+                >
+                  {cities.map((city, index) => (
+                    <option key={index} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
                 <button
                   className="w-1/4 px-3 py-2 border rounded bg-green-500 text-white text-xs"
-                  onClick={handleDestinationConfirmClick}
+                  onClick={setLatLonFromDestination}
                 >
                   Confirm
-                </button>
-                <button
-                  className="w-1/4 px-3 py-2 border rounded bg-blue-500 text-white text-xs"
-                  onClick={getCurrentLocation}
-                >
-                  Get Current Location
                 </button>
               </div>
             </div>

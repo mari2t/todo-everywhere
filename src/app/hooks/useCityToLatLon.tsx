@@ -20,7 +20,6 @@ export const useCityToLatLon = () => {
   } | null> => {
     try {
       const encodedCity = encodeURIComponent(city);
-      console.log(city);
       const response = await axios.get(`/api/GetLatLon`, {
         params: {
           city: encodedCity,
@@ -35,9 +34,7 @@ export const useCityToLatLon = () => {
       });
 
       // 位置の名前を返す
-      console.log(response.data);
       console.log(response.data[0].country);
-      console.log(response.data[0].name);
       return {
         latitude: response.data[0].lat,
         longitude: response.data[0].lon,

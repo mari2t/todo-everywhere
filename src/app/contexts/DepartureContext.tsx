@@ -63,8 +63,8 @@ const INITIAL_GEOCODING_LOCATION = {
   country: "JP",
 };
 const INITIAL_GEOCODING_DESTINATION = {
-  cityName: "paris",
-  country: "FR",
+  cityName: "London",
+  country: "GB",
 };
 const INITIAL_TODOS = [
   { id: 1, task: "", done: false },
@@ -89,8 +89,8 @@ export default function DepartureProvider({
   });
   const [geocodingDestination, setGeocodingDestination] =
     useState<CityAndCountry>({
-      cityName: "paris",
-      country: "FR",
+      cityName: "London",
+      country: "GB",
     });
   const [todos, setTodos] = useState<TodoType[]>([
     { id: 1, task: "", done: false },
