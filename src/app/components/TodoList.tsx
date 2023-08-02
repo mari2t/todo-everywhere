@@ -30,8 +30,6 @@ const TodoList: React.FunctionComponent = () => {
   const router = useRouter();
 
   const handleTodoClick = (index: number) => {
-    console.log(`Todo ${index} completed`);
-
     setTodos((prev) =>
       prev.map((item, i) => (i === index ? { ...item, done: true } : item))
     );
@@ -39,7 +37,6 @@ const TodoList: React.FunctionComponent = () => {
 
     // Display the next waypoint
     if (completedTasks < waypoints.length) {
-      console.log(`Waypoint ${completedTasks}:`, waypoints[completedTasks]);
     } else if (completedTasks === waypoints.length) {
       router.push("/Arrival");
     }

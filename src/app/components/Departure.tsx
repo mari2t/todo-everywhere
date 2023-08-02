@@ -155,8 +155,15 @@ const Departure = () => {
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (e.key === "Enter") {
-      // ここでエンターが押されたときのロジックを書く
       setLatLonFromLocation();
+    }
+  };
+
+  const handleEnterDestinationInput = (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (e.key === "Enter") {
+      setLatLonFromDestination();
     }
   };
 
@@ -265,7 +272,7 @@ const Departure = () => {
                   value={destination}
                   placeholder="input destination(ex London)"
                   onChange={(e) => setDestination(e.target.value)}
-                  onKeyDown={setLatLonFromDestination}
+                  onKeyDown={handleEnterDestinationInput}
                 />
                 <label className="w-1/6 text-center">or</label>
                 <select

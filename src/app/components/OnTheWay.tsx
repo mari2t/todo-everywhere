@@ -9,17 +9,14 @@ export default function OnTheWay() {
   const { displayComponent, setDisplayComponent } = useDepartureContext();
 
   const handleTodoListClick = () => {
-    console.log("Status button clicked");
     setDisplayComponent("TodoList");
   };
 
   const handleDirectionClick = () => {
-    console.log("Direction button clicked");
     setDisplayComponent("Direction");
   };
 
   const handleSearchPlaceClick = () => {
-    console.log("Info button clicked");
     setDisplayComponent("SearchPlace");
   };
 
