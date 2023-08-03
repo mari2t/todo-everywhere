@@ -14,12 +14,18 @@ const Header: React.FC<HeaderProps> = ({ className = "" }) => {
         <div className="flex items-center">
           <div className="h-6 w-6 relative">
             <div
-              style={{ position: "relative", width: "100%", height: "100%" }}
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%", // 半径を50%にすることで円形にする
+                overflow: "hidden", // 円形以外の部分を隠す
+              }}
             >
               <Image
                 src="/img/todoeverywhere.jpg"
                 alt="Logo"
-                width={500}
+                width={300}
                 height={300}
               />
             </div>

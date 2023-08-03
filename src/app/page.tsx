@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     resetState();
-  }, [resetState]); // 依存性配列にresetStateを追加します。
+  }, []); //
 
   return (
     <div className="relative min-h-screen">
