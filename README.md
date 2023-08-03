@@ -7,6 +7,10 @@ It is an application to do TODO as if you were going on a trip!
 
 ## Example
 
+### ![example1.png](/public/img/example1.png "example1.png")
+
+### ![example2.png](/public/img/example2.png "example2.png")
+
 ## Features
 
 - Next.js
