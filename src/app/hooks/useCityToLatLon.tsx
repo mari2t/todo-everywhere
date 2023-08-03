@@ -33,8 +33,6 @@ export const useCityToLatLon = () => {
         cityName: response.data[0].name || null, // ここで cityName が undefined の場合は null を設定
       });
 
-      // 位置の名前を返す
-      console.log(response.data[0].country);
       return {
         latitude: response.data[0].lat,
         longitude: response.data[0].lon,
