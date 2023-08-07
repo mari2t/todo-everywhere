@@ -22,3 +22,8 @@ It is an application to do TODO as if you were going on a trip!
 ## Creation Date
 
 2023/7/9
+
+## Purpose of creation
+
+旅行が好きなので行きたい気持ちがありつつ家事や仕事で行くチャンスが無いので  
+せめて気分だけでもと思い作成しました。
