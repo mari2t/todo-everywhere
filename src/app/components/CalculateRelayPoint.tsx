@@ -12,7 +12,6 @@ type Todo = {
 };
 
 const CalculateRelayPoint = () => {
-  // フックを包含する新しい関数コンポーネント
   const [locationPosition, setLocationPosition] = useState<Position>({
     latitude: null,
     longitude: null,
@@ -28,7 +27,7 @@ const CalculateRelayPoint = () => {
   // 中継地点を格納するためのState
   const [relayPoints, setRelayPoints] = useState<Position[]>([]);
 
-  // Todoの状態が更新された時、中継地点を計算する
+  // タスクの状態が更新された時、中継地点を計算する
   useEffect(() => {
     if (
       locationPosition.latitude &&

@@ -18,8 +18,8 @@ const Header: React.FC<HeaderProps> = ({ className = "" }) => {
                 position: "relative",
                 width: "100%",
                 height: "100%",
-                borderRadius: "50%", // 半径を50%にすることで円形にする
-                overflow: "hidden", // 円形以外の部分を隠す
+                borderRadius: "50%",
+                overflow: "hidden",
               }}
             >
               <Image

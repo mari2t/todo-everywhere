@@ -119,7 +119,6 @@ const Departure = () => {
           ratio
         );
 
-        // Convert to 5 decimal places and parse back to a number
         newLatitude = parseFloat(newLatitude?.toFixed(5) || "");
         newLongitude = parseFloat(newLongitude?.toFixed(5) || "");
 
@@ -129,7 +128,7 @@ const Departure = () => {
     }
   };
 
-  // Linear interpolation function
+  // 距離を計算する関数
   function lerp(
     start: number | null,
     end: number | null,
